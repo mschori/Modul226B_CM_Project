@@ -27,7 +27,7 @@ public class ContactController {
     private enum Sort {
         Privat,
         Geschaeftlich,
-        Unbekannt
+        Unbekannt,
     }
 
     @CrossOrigin //allows cross-origin-requests

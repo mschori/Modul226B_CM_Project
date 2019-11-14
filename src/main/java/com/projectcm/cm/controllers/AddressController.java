@@ -5,6 +5,9 @@ import com.projectcm.cm.repos.AddressRepsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import java.util.List;
 import java.util.Optional;
 

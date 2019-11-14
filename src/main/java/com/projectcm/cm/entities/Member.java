@@ -19,13 +19,13 @@ public class Member {
     @Column(name = "company")
     private String company;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true)
-    @JoinColumn(name = "fk_member")
-    private List<Address> adresses = new ArrayList<>();
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true)
-    @JoinColumn(name = "fk_member")
-    private List<Contact> contacts = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true)
+//    @JoinColumn(name = "fk_member")
+//    private List<Address> adresses = new ArrayList<>();
+//
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true)
+//    @JoinColumn(name = "fk_member")
+//    private List<Contact> contacts = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -59,19 +59,19 @@ public class Member {
         this.company = company;
     }
 
-    public List<Address> getAdresses() {
-        return adresses;
-    }
-
-    public void setAdresses(List<Address> adresses) {
-        this.adresses = adresses;
-    }
-
-    public List<Contact> getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(List<Contact> contacts) {
-        this.contacts = contacts;
-    }
+//    public List<Address> getAdresses() {
+//        return adresses;
+//    }
+//
+//    public void setAdresses(List<Address> adresses) {
+//        this.adresses = adresses;
+//    }
+//
+//    public List<Contact> getContacts() {
+//        return contacts;
+//    }
+//
+//    public void setContacts(List<Contact> contacts) {
+//        this.contacts = contacts;
+//    }
 }

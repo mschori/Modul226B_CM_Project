@@ -1,0 +1,215 @@
+<!Doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <title>Kunde</title>
+    <script src="javascript/uncompressedJQUERY.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+    <script src="javascript/script_member.js"></script>
+    <link rel="stylesheet" href="style/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<header>
+    <!-- Title -->
+    <div class="container">
+        <h1 class="display-2 text-center mt-5" id="page_title">Kunden</h1>
+
+        <a href="http://localhost:63343/frontend/index.html"><button type="button" class="btn btn-info">Back</button></a>
+
+        <!-- Divider -->
+        <p class="border-top border-dark mt-4 mb-4"></p>
+    </div>
+</header>
+
+<body>
+<!-- Member details -->
+<input type="hidden" id="member_details_id">
+<input type="hidden" id="member_details_firstname">
+<input type="hidden" id="member_details_lastname">
+<input type="hidden" id="member_details_company">
+
+<!-- Modal create or update address -->
+<div class="modal fade" id="createUpdateModalAddress" tabindex="-1" role="dialog"
+     aria-labelledby="createUpdateModalAddress"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalTitleAddress">Neue Adresse</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="#" id="createUpdateFormAddress" method="post">
+                <div class="modal-body">
+                    <input type="hidden" id="createUpdateAddressId" name="id">
+                    <label for="createUpdateAddress">Adresse</label>
+                    <input type="text" id="createUpdateAddress" class="form-control" name="address" required>
+                    <label for="createUpdateCode" class="mt-2">PLZ</label>
+                    <input type="text" id="createUpdateCode" class="form-control" name="code" required>
+                    <label for="createUpdateCity" class="mt-2">Stadt</label>
+                    <input type="text" id="createUpdateCity" class="form-control" name="city" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Schliessen</button>
+                    <button type="submit" class="btn btn-primary">Erstelle Kunde</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal delete addresse -->
+<div class="modal fade" id="deleteModalAddress" tabindex="-1" role="dialog" aria-labelledby="deleteModalAddress"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalTitleAddress">Möchtest du diese Adresse wirklich löschen?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="#" id="deleteFormAddress" method="post">
+                <div class="modal-body">
+                    <input type="hidden" id="deleteAddressId">
+                    <span id="deleteAddressText">
+                        <!-- Text -->
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Schliessen</button>
+                    <button type="submit" class="btn btn-danger">Löschen</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal create or update contact -->
+<div class="modal fade" id="createUpdateModalContact" tabindex="-1" role="dialog"
+     aria-labelledby="createUpdateModalContact"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalTitleContact">Neue Adresse</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="#" id="createUpdateFormContact" method="post">
+                <div class="modal-body">
+                    <input type="hidden" id="createUpdateContactId" name="id">
+                    <label for="createUpdateName">Merkname</label>
+                    <input type="text" id="createUpdateName" class="form-control" name="name" required>
+                    <label for="createUpdateType" class="mt-2">Typ</label>
+                    <input type="text" id="createUpdateType" class="form-control" name="type" required>
+                    <label for="createUpdateSort" class="mt-2">Sorte</label>
+                    <input type="text" id="createUpdateSort" class="form-control" name="sort" required>
+                    <label for="createUpdateValue" class="mt-2">Wert</label>
+                    <input type="text" id="createUpdateValue" class="form-control" name="value" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Schliessen</button>
+                    <button type="submit" class="btn btn-primary">Erstelle Kunde</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal delete contact -->
+<div class="modal fade" id="deleteModalContact" tabindex="-1" role="dialog" aria-labelledby="deleteModalContact"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalTitleContact">Möchtest du diese Kontaktmöglichkeit wirklich
+                    löschen?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="#" id="deleteFormContact" method="post">
+                <div class="modal-body">
+                    <input type="hidden" id="deleteContactId">
+                    <span id="deleteContactText">
+                        <!-- Text -->
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Schliessen</button>
+                    <button type="submit" class="btn btn-danger">Löschen</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Alerts -->
+<div class="container" id="alerts">
+    <!-- Self-filling -->
+</div>
+
+<!-- Title addresses -->
+<div class="container">
+    <h3><strong>Adressen des Kunden</strong></h3>
+</div>
+
+<!-- Menubar addresses -->
+<div class="container">
+    <button type="button" class="btn-sm btn-info mb-3" onclick="createAddress()">Neue Adresse erstellen</button>
+</div>
+
+<!-- Table addresses -->
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th class="col-md-3">Adresse</th>
+            <th class="col-md-3">PLZ</th>
+            <th class="col-md-3">Stadt</th>
+            <th class="col-md-3"></th>
+        </tr>
+        </thead>
+        <tbody id="tableBodyAddresses">
+        <!-- table-body -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Title contacts -->
+<div class="container mt-5">
+    <h3><strong>Kontaktmöglichkeiten des Kunden</strong></h3>
+</div>
+
+<!-- Menubar contacts -->
+<div class="container">
+    <button type="button" class="btn-sm btn-info mb-3" onclick="createContact()">Neue Kontaktmöglichkeit erstellen
+    </button>
+</div>
+
+<!-- Table contacts -->
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th class="col-md-3">Merkname</th>
+            <th class="col-md-3">Wert</th>
+            <th class="col-md-3">Typ</th>
+            <th class="col-md-3">Art</th>
+            <th class="col-md-3"></th>
+        </tr>
+        </thead>
+        <tbody id="tableBodyContacts">
+        <!-- table-body -->
+        </tbody>
+    </table>
+</div>
+
+</body>
+
+</html>

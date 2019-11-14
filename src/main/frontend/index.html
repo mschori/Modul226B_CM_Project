@@ -1,0 +1,112 @@
+<!Doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <title>Kunden</title>
+    <script src="javascript/uncompressedJQUERY.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+    <script src="javascript/script_index.js"></script>
+    <link rel="stylesheet" href="style/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<header>
+    <!-- Title -->
+    <div class="container">
+        <h1 class="display-2 text-center mt-5">Kunden</h1>
+
+        <!-- Divider -->
+        <p class="border-top border-dark mt-4 mb-4"></p>
+    </div>
+</header>
+
+<body>
+
+<!-- Modal create or update member -->
+<div class="modal fade" id="createUpdateModal" tabindex="-1" role="dialog" aria-labelledby="createUpdateModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalTitle">Neuer Kunde</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="#" id="createUpdateForm" method="post">
+                <div class="modal-body">
+                    <input type="hidden" id="createUpdateMemberId" name="id">
+                    <label for="createUpdateFirstname">Vorname</label>
+                    <input type="text" id="createUpdateFirstname" class="form-control" name="firstname" required>
+                    <label for="createUpdateLastname" class="mt-2">Nachname</label>
+                    <input type="text" id="createUpdateLastname" class="form-control" name="lastname" required>
+                    <label for="createUpdateCompany" class="mt-2">Firma</label>
+                    <input type="text" id="createUpdateCompany" class="form-control" name="company" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Schliessen</button>
+                    <button type="submit" class="btn btn-primary">Erstelle Kunde</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal delete member -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalTitle">Möchtest du diesen Kunden wirklich löschen?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="#" id="deleteForm" method="post">
+                <div class="modal-body">
+                    <input type="hidden" id="deleteMemberId">
+                    <span id="deleteMemberText">
+                        <!-- Text -->
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Schliessen</button>
+                    <button type="submit" class="btn btn-danger">Löschen</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Alerts -->
+<div class="container" id="alerts">
+    <!-- Self-filling -->
+</div>
+
+<!-- Menubar -->
+<div class="container">
+    <button type="button" class="btn btn-info mb-3" onclick="createMember()">Neuen Kunden erstellen</button>
+</div>
+
+<!-- Table -->
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th class="col-md-3">Vorname</th>
+            <th class="col-md-3">Nachname</th>
+            <th class="col-md-3">Firma</th>
+            <th class="col-md-3"></th>
+        </tr>
+        </thead>
+        <tbody id="tableBody">
+        <!-- table-body -->
+        </tbody>
+    </table>
+</div>
+
+</body>
+
+</html>

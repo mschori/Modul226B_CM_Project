@@ -3,6 +3,8 @@ $(document).ready(function () {
     getMemberDetails();
     listAddresses();
     listContacts();
+    getTypes();
+    getSorts();
 
     $('#createUpdateFormAddress').submit(function (e) {
         e.preventDefault();
@@ -25,6 +27,50 @@ $(document).ready(function () {
     });
 
 });
+
+function getTypes() {
+    $.ajax({
+        url: "http://localhost:8080/cm/contacts/types",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        type: 'GET',
+        data: {},
+        success: function (data) {
+            for (let i = 0; i < data.length; i++){
+                let option = $('<option></option>');
+                option.val(data[i]);
+                option.html(data[i]);
+                $('#createUpdateType').append(option);
+            }
+        },
+        error: function (response) {
+            createAlert('AJAX not working...', 'danger');
+        },
+    });
+}
+
+function getSorts() {
+    $.ajax({
+        url: "http://localhost:8080/cm/contacts/sorts",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        type: 'GET',
+        data: {},
+        success: function (data) {
+            for (let i = 0; i < data.length; i++){
+                let option = $('<option></option>');
+                option.val(data[i]);
+                option.html(data[i]);
+                $('#createUpdateSort').append(option);
+            }
+        },
+        error: function (response) {
+            createAlert('AJAX not working...', 'danger');
+        },
+    });
+}
 
 function saveAddress() {
     let type = 'POST';

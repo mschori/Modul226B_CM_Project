@@ -16,7 +16,7 @@
     <div class="container">
         <h1 class="display-2 text-center mt-5" id="page_title">Kunden</h1>
 
-        <a href="http://localhost:63343/frontend/index.html"><button type="button" class="btn btn-info">Back</button></a>
+        <a href="index.html"><button type="button" class="btn btn-info">Back</button></a>
 
         <!-- Divider -->
         <p class="border-top border-dark mt-4 mb-4"></p>
@@ -106,9 +106,13 @@
                     <label for="createUpdateName">Merkname</label>
                     <input type="text" id="createUpdateName" class="form-control" name="name" required>
                     <label for="createUpdateType" class="mt-2">Typ</label>
-                    <input type="text" id="createUpdateType" class="form-control" name="type" required>
+                    <select name="type" id="createUpdateType" class="form-control" required>
+                        <!-- self-filling -->
+                    </select>
                     <label for="createUpdateSort" class="mt-2">Sorte</label>
-                    <input type="text" id="createUpdateSort" class="form-control" name="sort" required>
+                    <select name="sort" id="createUpdateSort" class="form-control" required>
+                        <!-- self-filling -->
+                    </select>
                     <label for="createUpdateValue" class="mt-2">Wert</label>
                     <input type="text" id="createUpdateValue" class="form-control" name="value" required>
                 </div>
@@ -198,9 +202,9 @@
         <thead>
         <tr>
             <th class="col-md-3">Merkname</th>
-            <th class="col-md-3">Wert</th>
-            <th class="col-md-3">Typ</th>
-            <th class="col-md-3">Art</th>
+            <th class="col-md-2">Wert</th>
+            <th class="col-md-2">Typ</th>
+            <th class="col-md-2">Art</th>
             <th class="col-md-3"></th>
         </tr>
         </thead>
